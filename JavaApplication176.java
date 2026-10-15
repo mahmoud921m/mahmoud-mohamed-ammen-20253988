@@ -3,35 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Enter a positive integer: ");
-        int n = input.nextInt();
-        boolean isPrime = true;
+        int num = input.nextInt();
+        int reverse = 0;
 
-        if (n < 2) {
-            isPrime = false;
-        } else {
-            for (int i = 2; i < n; i++) {
-                if (n % i == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
+        while (num != 0) {
+            int digit = num % 10;
+            reverse = reverse * 10 + digit;
+            num /= 10;
         }
 
-        if (isPrime) {
-            System.out.println(n + " is a prime number.");
-        } else {
-            System.out.println(n + " is not a prime number.");
-        }
-
+        System.out.println(reverse);
         input.close();
     }
 }
-
