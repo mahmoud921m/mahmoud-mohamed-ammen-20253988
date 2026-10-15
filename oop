@@ -1,0 +1,31 @@
+package javaapplication176;
+
+/**
+ *
+ * @author Student
+ */
+import java.util.Scanner;
+public class JavaApplication176 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("enter number to check if divisib by 3 or 5 or both :");
+        int number= scanner.nextInt();
+        if(number%3==0 &&number%5==0){
+            System.out.println("divisib by 3 and 5");         
+    }
+        else if (number %3==0){
+            System.out.println("divisib by 3");
+        }
+        else if (number %5==0){
+             System.out.println("divisib by 5");
+        }
+        else {
+            System.out.println("not divisib by 3 or 5");
+        }
+    }
+}
