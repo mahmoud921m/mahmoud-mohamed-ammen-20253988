@@ -1,0 +1,18 @@
+package javaapplication231;
+
+/**
+ *
+ * @author Student
+ */
+public class JavaApplication231 {
+
+    public static double cylindervolume(double dValue, double hValue) {
+       double r =dValue /2;
+       double v= Math.PI * r * r * hValue;
+       return v;
+    }
+     public static void main(String[] args){
+         double result =cylindervolume(10.0,5.0);
+         System.out.println("cylinder volume =" + result);
+     }
+}
