@@ -1,0 +1,15 @@
+public class Main {
+    public static void main(String[] args) {
+        String testInput = " 20252007@fue.edu ";
+        System.out.println(extractDomain(testInput));
+    }
+
+    public static String extractDomain(String email) {
+        email = email.trim();
+        int atIndex = email.indexOf('@');
+        if (atIndex == -1) {
+            return "Invalid Email";
+        }
+        return email.substring(atIndex + 1).toLowerCase();
+    }
+}
