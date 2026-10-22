@@ -1,0 +1,38 @@
+package javaapplication189;
+
+import java.util.Scanner;
+
+public class JavaApplication189 {
+public static boolean isValidpassword(String password){
+   if (password.length()< 8){
+       return false;
+   }
+    int digitcount =0;
+    int uppercount =0;
+    for (int i =0; i< password.length(); i++){
+        char ch =password.charAt(i);
+    if (!Character.isLetterOrdigit(ch)){
+     return false;
+    }
+    if(!Character.isDigit(ch)){
+        digitcount++;
+    }
+    if (Character.isUppercase(ch)){
+        uppercount++;
+    }
+    }
+return digitcount >=2 &&uppercount >=1;
+}
+public static void main(String[] args){
+    Scanner scanner = new Scnner (System.in);
+    System.out.print("Enter password:");
+    string password = scanner.nextLine();
+    if(isValidpassword(password)){
+    System.out.println("valid password");
+    }
+    else {
+      System.out.println("Invalid password");  
+    }
+    scanner.close();
+}
+}
