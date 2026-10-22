@@ -1,0 +1,19 @@
+package javaapplication189;
+
+import java.util.Scanner;
+
+public class JavaApplication189 {
+public static double computeArea(double redius){
+    return Math.PI *redius * redius;
+}
+public static double computeArea(double length, double width){
+    return length * width;
+}
+public static double computeArea(double base, double height, boolean isTriangle){
+    return 0.5 * base * height;
+}
+public static void main(String[] args){
+System.out.println("Circle Area = " +computeArea(5.0));
+System.out.println("Rectangle Area =" +computeArea(4.0, 6.0));
+System.out.println("Triangle Area =" +computeArea(4.0, 6.0, true));
+}
