@@ -1,0 +1,41 @@
+package javaapplication164;
+import java.util.Scanner;
+
+public class JavaApplication164 {
+    public static void main(String[] args) {
+        int secret = generateSecret();
+        int[] guesses = new int[5];
+        Scanner scanner = new Scanner(System.in);
+        
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Guess: ");
+            guesses[i] = scanner.nextInt();
+            
+            String result = checkGuess(guesses[i], secret);
+            if (result.equals("Correct")) {
+                System.out.println("Correct in " + (i + 1) + " attempts");
+                scanner.close();
+                return;
+            } else {
+                System.out.println(result);
+            }
+        }
+        
+        System.out.println("Failed! The secret number was: " + secret);
+        scanner.close();
+    }
+
+    public static int generateSecret() {
+        return (int) (Math.random() * 50) + 1;
+    }
+
+    public static String checkGuess(int guess, int secret) {
+        if (guess < secret) {
+            return "Higher";
+        } else if (guess > secret) {
+            return "Lower";
+        } else {
+            return "Correct";
+        }
+    }
+}
