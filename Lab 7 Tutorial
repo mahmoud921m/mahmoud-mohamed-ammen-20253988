@@ -1,0 +1,91 @@
+import java.util.Scanner;
+public class JavaApplication75 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter the number of books: ");
+        int n = scanner.nextInt();
+        scanner.nextLine();
+
+        Book[] books = new Book[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for book " + (i + 1) + ":");
+            System.out.print("Title: ");
+            String title = scanner.nextLine();
+            System.out.print("Author: ");
+            String author = scanner.nextLine();
+            System.out.print("Price: ");
+            double price = scanner.nextDouble();
+            scanner.nextLine();
+
+            books[i] = new Book(title, author, price);
+        }
+
+        System.out.print("\nEnter the index of the book to apply discount (0 to " + (n - 1) + "): ");
+        int index = scanner.nextInt();
+
+        System.out.print("Enter discount percentage: ");
+        double discount = scanner.nextDouble();
+
+        if (index >= 0 && index < n) {
+            books[index].applyDiscount(discount);
+            System.out.println("Discount applied successfully!");
+        } else {
+            System.out.println("Invalid index!");
+        }
+
+        System.out.println("\n--- All Books Information ---");
+        for (int i = 0; i < n; i++) {
+            System.out.println("Book Index " + i + ":");
+            System.out.println("Title: " + books[i].getTitle());
+            System.out.println("Author: " + books[i].getAuthor());
+            System.out.println("Price: " + books[i].getPrice());
+            System.out.println("Is Expensive: " + (books[i].isExpensive() ? "Yes" : "No"));
+            System.out.println("-----------------------------");
+        }
+
+        scanner.close();
+    }
+}
+
+
+public class Book {
+    private String title;
+    private String author;
+    private double price;
+
+    public Book() {
+        this.title = "";
+        this.author = "";
+        this.price = 0.0;
+    }
+
+    public Book(String title, String author, double price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void applyDiscount(double percentage) {
+        if (percentage > 0 && percentage <= 100) {
+            price -= price * (percentage / 100.0);
+        }
+    }
+
+    public boolean isExpensive() {
+        return price > 500;
+    }
+}
