@@ -1,0 +1,149 @@
+package javaapplication221;
+
+public class JavaApplication221 {
+    public static void main(String[] args) {
+
+        Car car = new Car("Toyota", "Corolla", 2023, 4);
+        Motorcycle motorcycle = new Motorcycle("Honda", "CBR", 2022, 600);
+
+        car.displayDetails();
+        motorcycle.displayDetails();
+
+        System.out.println(car.calculateRentalPrice(3));
+        System.out.println(motorcycle.calculateRentalPrice(3));
+
+        System.out.println(car.calculateRentalPrice(3, 0.10));
+        System.out.println(motorcycle.calculateRentalPrice(3, 0.10));
+
+        System.out.println(car);
+        System.out.println(motorcycle);
+    }
+}
+
+package javaapplication221;
+
+public class Vehicle {
+    private String brand;
+    private String model;
+    private int year;
+
+    public Vehicle(String brand, String model, int year) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public double calculateRentalPrice(int days) {
+        return 0;
+    }
+
+    public double calculateRentalPrice(int days, double discount) {
+        return calculateRentalPrice(days) * (1 - discount);
+    }
+
+    public void displayDetails() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+    }
+
+    @Override
+    public String toString() {
+        return brand + " " + model + " " + year;
+    }
+}
+
+
+package javaapplication221;
+
+public class Car extends Vehicle {
+    private int numberOfDoors;
+
+    public Car(String brand, String model, int year, int numberOfDoors) {
+        super(brand, model, year);
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public int getNumberOfDoors() {
+        return numberOfDoors;
+    }
+
+    public void setNumberOfDoors(int numberOfDoors) {
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    @Override
+    public double calculateRentalPrice(int days) {
+        return days * 50;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Doors: " + numberOfDoors);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Doors: " + numberOfDoors;
+    }
+}
+
+package javaapplication221;
+
+public class Motorcycle extends Vehicle {
+    private int engineCapacity;
+
+    public Motorcycle(String brand, String model, int year, int engineCapacity) {
+        super(brand, model, year);
+        this.engineCapacity = engineCapacity;
+    }
+
+    public int getEngineCapacity() {
+        return engineCapacity;
+    }
+
+    public void setEngineCapacity(int engineCapacity) {
+        this.engineCapacity = engineCapacity;
+    }
+
+    @Override
+    public double calculateRentalPrice(int days) {
+        return days * 30;
+    }
+
+    @Override
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Engine Capacity: " + engineCapacity);
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Engine Capacity: " + engineCapacity;
+    }
+}
